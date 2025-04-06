@@ -1,0 +1,130 @@
+local screenGui = Instance.new("ScreenGui")
+local frame = Instance.new("Frame")
+local playerNameLabel = Instance.new("TextLabel")
+local inputBox = Instance.new("TextBox")
+local kickButton = Instance.new("TextButton")
+local banButton = Instance.new("TextButton")
+local kickAllButton = Instance.new("TextButton")
+local banAllButton = Instance.new("TextButton")
+local titleLabel = Instance.new("TextLabel")  -- Thêm titleLabel cho tên
+
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.Name = "AdminMenu"
+
+frame.Parent = screenGui
+frame.Size = UDim2.new(0, 400, 0, 300)
+frame.Position = UDim2.new(0.5, -200, 0.5, -150)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.BackgroundTransparency = 0.5
+
+-- Tạo label cho tên "bc2kq Pro 😈"
+titleLabel.Parent = frame
+titleLabel.Size = UDim2.new(0, 400, 0, 50)
+titleLabel.Position = UDim2.new(0, 0, 0, 0)  -- Đặt nó ở trên cùng
+titleLabel.Text = "bc2kq Pro 😈"
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.TextSize = 20
+titleLabel.TextAlign = Enum.TextAlign.Center
+titleLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+titleLabel.BackgroundTransparency = 1
+titleLabel.TextTransparency = 0.5
+
+playerNameLabel.Parent = frame
+playerNameLabel.Size = UDim2.new(0, 300, 0, 50)
+playerNameLabel.Position = UDim2.new(0, 50, 0, 60)  -- Đặt dưới dòng tên
+playerNameLabel.Text = "Player Name"
+playerNameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+playerNameLabel.TextSize = 20
+playerNameLabel.TextTransparency = 0.5
+
+inputBox.Parent = frame
+inputBox.Size = UDim2.new(0, 300, 0, 50)
+inputBox.Position = UDim2.new(0, 50, 0, 120)
+inputBox.PlaceholderText = "Enter player name"
+inputBox.Text = ""
+inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+inputBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+
+kickButton.Parent = frame
+kickButton.Size = UDim2.new(0, 100, 0, 50)
+kickButton.Position = UDim2.new(0, 50, 0, 180)
+kickButton.Text = "Kick"
+kickButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+kickButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+
+banButton.Parent = frame
+banButton.Size = UDim2.new(0, 100, 0, 50)
+banButton.Position = UDim2.new(0, 150, 0, 180)
+banButton.Text = "Ban"
+banButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+banButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+
+kickAllButton.Parent = frame
+kickAllButton.Size = UDim2.new(0, 100, 0, 50)
+kickAllButton.Position = UDim2.new(0, 50, 0, 250)
+kickAllButton.Text = "Kick All"
+kickAllButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+kickAllButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+
+banAllButton.Parent = frame
+banAllButton.Size = UDim2.new(0, 100, 0, 50)
+banAllButton.Position = UDim2.new(0, 150, 0, 250)
+banAllButton.Text = "Ban All"
+banAllButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+banAllButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+
+local function kickPlayer(playerName)
+    local player = game.Players:FindFirstChild(playerName)
+    if player then
+        player:Kick("You have been kicked from the game!")
+    end
+end
+
+local function banPlayer(playerName)
+    local player = game.Players:FindFirstChild(playerName)
+    if player then
+        -- Đây là phần chỉ để minh họa, việc cấm người chơi yêu cầu quyền truy cập server.
+        -- Các game như Blox Fruits có thể có các hạn chế đối với việc cấm người chơi từ client.
+        print(playerName .. " has been banned!")
+    end
+end
+
+local function kickAllPlayers()
+    for _, player in pairs(game.Players:GetPlayers()) do
+        if player.Name ~= game.Players.LocalPlayer.Name then
+            player:Kick("You have been kicked from the game!")
+        end
+    end
+end
+
+local function banAllPlayers()
+    for _, player in pairs(game.Players:GetPlayers()) do
+        if player.Name ~= game.Players.LocalPlayer.Name then
+            -- Tương tự như kick, cấm người chơi yêu cầu quyền truy cập server.
+            print(player.Name .. " has been banned!")
+        end
+    end
+end
+
+-- Thêm chức năng thay đổi trạng thái của nút khi nhấn vào các nút Kick, Ban, Kick All, Ban All
+kickButton.MouseButton1Click:Connect(function()
+    local playerName = inputBox.Text
+    if playerName ~= "" then
+        kickPlayer(playerName)
+    end
+end)
+
+banButton.MouseButton1Click:Connect(function()
+    local playerName = inputBox.Text
+    if playerName ~= "" then
+        banPlayer(playerName)
+    end
+end)
+
+kickAllButton.MouseButton1Click:Connect(function()
+    kickAllPlayers()
+end)
+
+banAllButton.MouseButton1Click:Connect(function()
+    banAllPlayers()
+end)
