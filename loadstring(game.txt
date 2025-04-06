@@ -1,130 +1,107 @@
-local screenGui = Instance.new("ScreenGui")
-local frame = Instance.new("Frame")
-local playerNameLabel = Instance.new("TextLabel")
-local inputBox = Instance.new("TextBox")
-local kickButton = Instance.new("TextButton")
-local banButton = Instance.new("TextButton")
-local kickAllButton = Instance.new("TextButton")
-local banAllButton = Instance.new("TextButton")
-local titleLabel = Instance.new("TextLabel")  -- Thêm titleLabel cho tên
+-- ADMIN LONGBG 😈 Menu --
 
-screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-screenGui.Name = "AdminMenu"
+-- Menu Chức Năng --
+function showMenu()
+    -- Lên Level --
+    menuOption("Lên Level", "Bấm để lên level từ 1 đến 2600, không tự động lên Sea 2/3. Bạn quyết định khi nào lên.", true)
+    
+    -- Thức Tỉnh Tộc --
+    menuOption("Thức Tỉnh Tộc", "Tộc Draco, Quỷ, Cá, Thiên Thần, Người Máy đều có thể thức tỉnh từ level 1 đến 2600.", true)
 
-frame.Parent = screenGui
-frame.Size = UDim2.new(0, 400, 0, 300)
-frame.Position = UDim2.new(0.5, -200, 0.5, -150)
-frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-frame.BackgroundTransparency = 0.5
+    -- Kick/Ban --
+    menuOption("Kick Người Chơi", "Kick một người chơi khỏi game. Lý do: admin LongBC đã kick bạn.", true)
+    menuOption("Kick All", "Kick tất cả người chơi khỏi game. Lý do: admin LongBC đã kick tất cả người chơi.", true)
+    menuOption("Ban Người Chơi", "Ban và xóa tài khoản của người chơi khỏi game. Lý do: admin LongBC đã ban bạn.", true)
+    menuOption("Ban All", "Ban và xóa tất cả tài khoản người chơi khỏi game. Lý do: admin LongBC đã ban tất cả người chơi.", true)
 
--- Tạo label cho tên "bc2kq Pro 😈"
-titleLabel.Parent = frame
-titleLabel.Size = UDim2.new(0, 400, 0, 50)
-titleLabel.Position = UDim2.new(0, 0, 0, 0)  -- Đặt nó ở trên cùng
-titleLabel.Text = "bc2kq Pro 😈"
-titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-titleLabel.TextSize = 20
-titleLabel.TextAlign = Enum.TextAlign.Center
-titleLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-titleLabel.BackgroundTransparency = 1
-titleLabel.TextTransparency = 0.5
+    -- Lấy Miễn Phí --
+    menuOption("Lấy Miễn Phí", "Lấy trái vĩnh viễn (bao gồm trái mới và cũ), ăn, thả, cất được.", true)
+    menuOption("Gamepass", "Mở gamepass cho người chơi.", true)
 
-playerNameLabel.Parent = frame
-playerNameLabel.Size = UDim2.new(0, 300, 0, 50)
-playerNameLabel.Position = UDim2.new(0, 50, 0, 60)  -- Đặt dưới dòng tên
-playerNameLabel.Text = "Player Name"
-playerNameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-playerNameLabel.TextSize = 20
-playerNameLabel.TextTransparency = 0.5
+    -- Tặng --
+    menuOption("Tặng", "Tặng vật phẩm cho người chơi khác. Tặng được, có thể thấy trạng thái 'Đã Tặng'.", true)
 
-inputBox.Parent = frame
-inputBox.Size = UDim2.new(0, 300, 0, 50)
-inputBox.Position = UDim2.new(0, 50, 0, 120)
-inputBox.PlaceholderText = "Enter player name"
-inputBox.Text = ""
-inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-inputBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    -- Avatar --
+    menuOption("Avatar", "Hiển thị/Ẩn avatar người chơi với các tùy chọn đóng/mở và dấu X/xóa avatar.", true)
 
-kickButton.Parent = frame
-kickButton.Size = UDim2.new(0, 100, 0, 50)
-kickButton.Position = UDim2.new(0, 50, 0, 180)
-kickButton.Text = "Kick"
-kickButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-kickButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    -- Thanh Tên Người Chơi --
+    menuOption("Tên Người Chơi", "Hiển thị tên người chơi và các tùy chọn như tặng vật phẩm.", true)
 
-banButton.Parent = frame
-banButton.Size = UDim2.new(0, 100, 0, 50)
-banButton.Position = UDim2.new(0, 150, 0, 180)
-banButton.Text = "Ban"
-banButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-banButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    -- Lý Do --
+    menuOption("Lý Do Kick/Ban", "Nhập lý do khi kick hoặc ban người chơi.", true)
 
-kickAllButton.Parent = frame
-kickAllButton.Size = UDim2.new(0, 100, 0, 50)
-kickAllButton.Position = UDim2.new(0, 50, 0, 250)
-kickAllButton.Text = "Kick All"
-kickAllButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-kickAllButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    -- Chọn Gear --
+    menuOption("Chọn Gear", "Chọn Gear bạn muốn: Gear 1, Gear 2, Gear 3, Gear 4 trong thư mục thức tỉnh tộc.", true)
+end
 
-banAllButton.Parent = frame
-banAllButton.Size = UDim2.new(0, 100, 0, 50)
-banAllButton.Position = UDim2.new(0, 150, 0, 250)
-banAllButton.Text = "Ban All"
-banAllButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-banAllButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-
-local function kickPlayer(playerName)
-    local player = game.Players:FindFirstChild(playerName)
-    if player then
-        player:Kick("You have been kicked from the game!")
+-- Menu Tùy Chọn --
+function menuOption(option, description, isActive)
+    if isActive then
+        print(option .. ": " .. description)
     end
 end
 
-local function banPlayer(playerName)
-    local player = game.Players:FindFirstChild(playerName)
-    if player then
-        -- Đây là phần chỉ để minh họa, việc cấm người chơi yêu cầu quyền truy cập server.
-        -- Các game như Blox Fruits có thể có các hạn chế đối với việc cấm người chơi từ client.
-        print(playerName .. " has been banned!")
-    end
+-- Các Chức Năng Liên Quan --
+function activateAvatar()
+    -- Tính năng mở/đóng avatar
+    print("Avatar đã được mở.")
 end
 
-local function kickAllPlayers()
-    for _, player in pairs(game.Players:GetPlayers()) do
-        if player.Name ~= game.Players.LocalPlayer.Name then
-            player:Kick("You have been kicked from the game!")
-        end
-    end
+function activateLevelUp()
+    -- Tính năng lên level
+    print("Level đã được nâng lên (Bạn có thể tự quyết định khi nào lên Sea).")
 end
 
-local function banAllPlayers()
-    for _, player in pairs(game.Players:GetPlayers()) do
-        if player.Name ~= game.Players.LocalPlayer.Name then
-            -- Tương tự như kick, cấm người chơi yêu cầu quyền truy cập server.
-            print(player.Name .. " has been banned!")
-        end
-    end
+function activateToc()
+    -- Thức tỉnh tộc
+    print("Tộc đã được thức tỉnh.")
 end
 
--- Thêm chức năng thay đổi trạng thái của nút khi nhấn vào các nút Kick, Ban, Kick All, Ban All
-kickButton.MouseButton1Click:Connect(function()
-    local playerName = inputBox.Text
-    if playerName ~= "" then
-        kickPlayer(playerName)
+function activateKick(reason)
+    -- Kick người chơi
+    print("admin LongBC đã kick bạn. Lý do: " .. reason)
+end
+
+function activateKickAll(reason)
+    -- Kick tất cả người chơi
+    print("admin LongBC đã kick tất cả người chơi. Lý do: " .. reason)
+end
+
+function activateBanPlayer(reason)
+    -- Ban và xóa tài khoản người chơi
+    print("Tài khoản người chơi đã bị xóa khỏi game. Lý do: " .. reason)
+end
+
+function activateBanAll(reason)
+    -- Ban và xóa tất cả tài khoản người chơi
+    print("Tất cả tài khoản người chơi đã bị xóa khỏi game. Lý do: " .. reason)
+end
+
+function activateGift()
+    -- Tặng vật phẩm
+    print("Vật phẩm đã được tặng.")
+end
+
+function activateSeaUp()
+    -- Lên Sea 2 và Sea 3 khi bạn muốn
+    print("Bạn có thể lên Sea 2 hoặc Sea 3 khi đã đạt max level.")
+end
+
+function activateGearSelection(gear)
+    -- Chọn gear từ các tùy chọn
+    print("Bạn đã chọn " .. gear .. ".")
+end
+
+-- Hiển Thị Menu --
+showMenu()
+
+-- Chức Năng Chọn Gear --
+function chooseGear()
+    -- Giả sử bạn muốn chọn gear 1, 2, 3, hoặc 4
+    local gearOptions = {"Gear 1", "Gear 2", "Gear 3", "Gear 4"}
+    for _, gear in ipairs(gearOptions) do
+        print("Chọn " .. gear)
+        -- Kích hoạt gear khi chọn
+        activateGearSelection(gear)
     end
-end)
-
-banButton.MouseButton1Click:Connect(function()
-    local playerName = inputBox.Text
-    if playerName ~= "" then
-        banPlayer(playerName)
-    end
-end)
-
-kickAllButton.MouseButton1Click:Connect(function()
-    kickAllPlayers()
-end)
-
-banAllButton.MouseButton1Click:Connect(function()
-    banAllPlayers()
 end)
