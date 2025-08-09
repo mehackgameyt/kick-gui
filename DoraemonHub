@@ -1,0 +1,365 @@
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua")))()
+
+       local Window = MakeWindow({
+         Hub = {
+         Title = "Doraemon Hub",
+         Animation = " Doraemon Hub "
+         },
+        Key = {
+        KeySystem = false,
+        Title = "password System"
+        Description = "",
+        KeyLink = "",
+        password = {"000"},
+        Notifi = {
+        Notifications = true,
+        CorrectKey = "Đang tải...",
+       Incorrectkey = " password is incorrect",
+       CopyKeyLink = "Saved To Clipboard"
+      }
+    }
+  })
+
+
+       MinimizeButton({
+       Image = "http://www.roblox.com/asset/?id=114354774191705",
+       Size = {60, 60},
+       Color = Color3.fromRGB(10, 10, 10),
+       Corner = true,
+       Stroke = false,
+       StrokeColor = Color3.fromRGB(255, 0, 0)
+      })
+      
+------ Tab
+     local Tab1o = MakeTab({Name = "Script Farm"})
+     
+------- BUTTON
+    
+    AddButton(Tab1o, {
+     Name = "Redz Hub",
+    Callback = function()
+	  -- https://scriptblox.com/script/GRAVITY-Blox-Fruits-Actual-Redz-Hub-Script-Updated-40394
+
+local Settings = {
+    JoinTeam = "Pirates"; -- Pirates / Marines
+    Translator = true;   -- true / false
+}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/tlredz/Scripts/refs/heads/main/main.luau"))(Settings)
+  
+  local Tab2o = MakeTab({Name = "controll player"})
+  
+  AddButton(Tab2o, {
+     Name = "Controll player",
+    Callback = function()
+	 
+  -- Objects
+plr = game.Players.LocalPlayer
+ControlGui = Instance.new("ScreenGui")
+Frame = Instance.new("Frame")
+TextButton = Instance.new("TextButton")
+TextBox = Instance.new("TextBox")
+
+-- Properties
+
+ControlGui.Name = "ControlGui"
+ControlGui.Parent = plr.PlayerGui
+
+Frame.Parent = ControlGui
+Frame.BackgroundColor3 = Color3.new(1, 1, 1)
+Frame.Position = UDim2.new(0, 300, 0, 200)
+Frame.Size = UDim2.new(0, 300, 0, 150)
+Frame.Active = true
+Frame.Draggable = true
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.new(1, 1, 1)
+TextButton.Position = UDim2.new(0, 50, 0, 90)
+TextButton.Size = UDim2.new(0, 200, 0, 50)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.FontSize = Enum.FontSize.Size32
+TextButton.Text = "Control"
+TextButton.TextSize = 30
+TextButton.MouseButton1Down:connect(function()
+	if TextButton.Text == "Control" then
+	TextButton.Text = "UnControl"	
+	workspace[TextBox.Text].Humanoid.PlatformStand = true
+	W1 = Instance.new("Weld",workspace)
+	W1.Name = "Weld1"
+	W1.Part0 = plr.Character.Torso
+	W1.Part1 = workspace[TextBox.Text].Torso
+	W2 = Instance.new("Weld",workspace)
+	W2.Name = "Weld2"
+	W2.Part0 = plr.Character.Head
+	W2.Part1 = workspace[TextBox.Text].Head
+	W3 = Instance.new("Weld",workspace)
+	W3.Name = "Weld3"
+	W3.Part0 = plr.Character.HumanoidRootPart
+	W3.Part1 = workspace[TextBox.Text].HumanoidRootPart
+	W4 = Instance.new("Weld",workspace)
+	W4.Name = "Weld4"
+	W4.Part0 = plr.Character["Left Arm"]
+	W4.Part1 = workspace[TextBox.Text]["Left Arm"]
+	W5 = Instance.new("Weld",workspace)
+	W5.Name = "Weld5"
+	W5.Part0 = plr.Character["Left Leg"]
+	W5.Part1 = workspace[TextBox.Text]["Left Leg"]
+	W6 = Instance.new("Weld",workspace)
+	W6.Name = "Weld6"
+	W6.Part0 = plr.Character["Right Arm"]
+	W6.Part1 = workspace[TextBox.Text]["Right Arm"]
+	W7 = Instance.new("Weld",workspace)
+	W7.Name = "Weld7"
+	W7.Part0 = plr.Character["Right Leg"]
+	W7.Part1 = workspace[TextBox.Text]["Right Leg"]
+	for i,v in pairs(plr.Character:GetChildren()) do
+			if v.ClassName == "Part" then
+				v.Transparency = 1
+			end
+			plr.Character.HumanoidRootPart.Transparency = 1
+			if v.ClassName == "Accessory" then
+				v.Handle.Transparency = 1
+			end
+			plr.Character.Humanoid.NameOcclusion = "NoOcclusion"
+	end
+	elseif TextButton.Text == "UnControl" then
+	TextButton.Text = "Control"
+	workspace[TextBox.Text].Humanoid.PlatformStand = false
+	workspace.Weld1:Remove()
+	workspace.Weld2:Remove()
+	workspace.Weld3:Remove()
+	workspace.Weld4:Remove()
+	workspace.Weld5:Remove()
+	workspace.Weld6:Remove()
+	workspace.Weld7:Remove()
+	for i,v in pairs(plr.Character:GetChildren()) do
+			if v.ClassName == "Part" then
+				v.Transparency = 0
+			end
+			plr.Character.HumanoidRootPart.Transparency = 1
+			if v.ClassName == "Accessory" then
+				v.Handle.Transparency = 0
+			end
+			plr.Character.Humanoid.NameOcclusion = "OccludeAll"
+	end
+end
+end)
+
+TextBox.Parent = Frame
+TextBox.BackgroundColor3 = Color3.new(1, 1, 1)
+TextBox.Position = UDim2.new(0, 50, 0, 20)
+TextBox.Size = UDim2.new(0, 200, 0, 30)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.FontSize = Enum.FontSize.Size28
+TextBox.Text = "Name"
+TextBox.TextSize = 25
+
+local Tab1o = MakeTab({Name = "controll npc"})
+  
+  AddButton(Tab3o, {
+     Name = "Controll npc",
+    Callback = function()
+    
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/randomstring0/fe-source/refs/heads/main/NPC/source/main.Luau"))()
+    
+    local Tab1o = MakeTab({Name = "Steal Pro"})
+  
+  AddButton(Tab4o, {
+     Name = "Steal Pro",
+    Callback = function()
+    
+    
+    -- Steal GUI - Bản sao đồ từ người được chọn (copy đồ trong Backpack)
+-- GUI có nút mở/đóng, hiệu ứng chữ cầu vồng, tự động tìm tên, copy đồ sang balo mình
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+
+-- Hàm tạo hiệu ứng chữ cầu vồng (cycle màu chữ)
+local function rainbowText(label)
+    local colors = {
+        Color3.fromRGB(255,0,0),
+        Color3.fromRGB(255,127,0),
+        Color3.fromRGB(255,255,0),
+        Color3.fromRGB(0,255,0),
+        Color3.fromRGB(0,0,255),
+        Color3.fromRGB(75,0,130),
+        Color3.fromRGB(148,0,211)
+    }
+    local idx = 1
+    spawn(function()
+        while label and label.Parent do
+            label.TextColor3 = colors[idx]
+            idx = idx % #colors + 1
+            task.wait(0.15)
+        end
+    end)
+end
+
+-- Nút mở GUI
+local openButton = Instance.new("TextButton")
+openButton.Text = "Steal GUI"
+openButton.Size = UDim2.new(0,150,0,50)
+openButton.Position = UDim2.new(0,20,0,20)
+openButton.BackgroundColor3 = Color3.fromRGB(255,0,0)
+openButton.Font = Enum.Font.GothamBold
+openButton.TextSize = 22
+openButton.Parent = gui
+openButton.TextColor3 = Color3.new(1,1,1)
+rainbowText(openButton)
+
+-- Khung chính
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0,400,0,200)
+mainFrame.Position = UDim2.new(0.5,-200,0.5,-100)
+mainFrame.AnchorPoint = Vector2.new(0.5,0.5)
+mainFrame.BackgroundColor3 = Color3.fromRGB(255,50,50) -- đỏ bên trong
+mainFrame.Active = true
+mainFrame.Draggable = true
+mainFrame.Visible = false
+mainFrame.Parent = gui
+
+-- Viền cam ngoài (Frame bọc mainFrame)
+local borderFrame = Instance.new("Frame")
+borderFrame.Size = UDim2.new(1,10,1,10)
+borderFrame.Position = UDim2.new(0,-5,0,-5)
+borderFrame.BackgroundColor3 = Color3.fromRGB(255,165,0) -- cam
+borderFrame.ZIndex = 0
+borderFrame.Parent = mainFrame
+
+-- Tiêu đề
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Text = "Steal GUI"
+titleLabel.Size = UDim2.new(1,0,0,40)
+titleLabel.BackgroundTransparency = 1
+titleLabel.Font = Enum.Font.GothamBold
+titleLabel.TextSize = 28
+titleLabel.TextColor3 = Color3.fromRGB(255,0,0)
+titleLabel.Parent = mainFrame
+rainbowText(titleLabel)
+
+-- Nút đóng X
+local closeButton = Instance.new("TextButton")
+closeButton.Text = "X"
+closeButton.Size = UDim2.new(0,35,0,35)
+closeButton.Position = UDim2.new(1,-40,0,5)
+closeButton.BackgroundColor3 = Color3.fromRGB(255,0,0)
+closeButton.TextColor3 = Color3.new(1,1,1)
+closeButton.Font = Enum.Font.GothamBold
+closeButton.TextSize = 26
+closeButton.Parent = mainFrame
+
+closeButton.MouseButton1Click:Connect(function()
+    mainFrame.Visible = false
+    openButton.Visible = true
+end)
+
+-- Ô nhập tên (placeholder màu đỏ)
+local nameBox = Instance.new("TextBox")
+nameBox.PlaceholderText = "Nhập tên người được chọn cần copy"
+nameBox.Size = UDim2.new(1,-40,0,40)
+nameBox.Position = UDim2.new(0,20,0,60)
+nameBox.TextColor3 = Color3.new(1,1,1)
+nameBox.Font = Enum.Font.GothamBold
+nameBox.TextSize = 20
+nameBox.ClearTextOnFocus = false
+nameBox.Parent = mainFrame
+
+-- Nút Trộm (copy) đồ
+local stealButton = Instance.new("TextButton")
+stealButton.Text = "Trộm 😈"
+stealButton.Size = UDim2.new(0,150,0,45)
+stealButton.Position = UDim2.new(0.5,-75,1,-60)
+stealButton.BackgroundColor3 = Color3.fromRGB(255,0,0)
+stealButton.TextColor3 = Color3.new(1,1,1)
+stealButton.Font = Enum.Font.GothamBold
+stealButton.TextSize = 22
+stealButton.Parent = mainFrame
+
+-- Khi bảng hiện, nút mở ẩn, khi bảng ẩn thì nút mở hiện
+openButton.MouseButton1Click:Connect(function()
+    mainFrame.Visible = true
+    openButton.Visible = false
+end)
+
+-- Tự động tìm tên trùng theo 1 ký tự hoặc nhiều ký tự, cho phép số và ký tự
+nameBox:GetPropertyChangedSignal("Text"):Connect(function()
+    local txt = nameBox.Text
+    if #txt > 0 then
+        for _,plr in pairs(Players:GetPlayers()) do
+            if plr.Name:lower():sub(1,#txt) == txt:lower() then
+                if nameBox.Text ~= plr.Name then
+                    nameBox.Text = plr.Name
+                    nameBox.CursorPosition = #plr.Name + 1
+                end
+                break
+            end
+        end
+    end
+end)
+
+-- Hàm copy toàn bộ đồ trong Backpack người được chọn sang balo mình
+local function copyBackpack(targetName)
+    local targetPlayer = Players:FindFirstChild(targetName)
+    if not targetPlayer then return end
+    if not targetPlayer:FindFirstChild("Backpack") then return end
+    local targetBackpack = targetPlayer.Backpack
+    local myBackpack = player.Backpack
+    for _, item in pairs(targetBackpack:GetChildren()) do
+        -- Clone món đồ rồi cho vào balo mình
+        if item:IsA("Tool") then
+            local cloneItem = item:Clone()
+            cloneItem.Parent = myBackpack
+        end
+    end
+end
+
+-- Nút trộm đồ
+stealButton.MouseButton1Click:Connect(function()
+    local targetName = nameBox.Text
+    if targetName == "" then
+        stealButton.BackgroundColor3 = Color3.fromRGB(150,150,150) -- xám nếu rỗng tên
+        return
+    end
+    stealButton.BackgroundColor3 = Color3.fromRGB(255,0,0)
+    copyBackpack(targetName)
+end)
+
+  local Tab1o = MakeTab({Name = "controll npc"})
+  
+  AddButton(Tab5o, {
+     Name = "WallHop V3",
+    Callback = function()
+    
+    
+    -- https://scriptblox.com/script/Universal-Script-Wallhop-V3-46344
+
+loadstring(game:HttpGet("https://github.com/codzal/rbxscripts/raw/refs/heads/main/wallhop.lua", true))()
+
+local Tab1o = MakeTab({Name = "controll npc"})
+  
+  AddButton(Tab6o, {
+     Name = "Speed Hub X ",
+    Callback = function()
+    
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+    
+    local Tab7o = MakeTab({Name = "Xero Hub"})
+  
+    AddButton(Tab7o, {
+     Name = "Xero Hub",
+    Callback = function()
+    
+    getgenv().Team = "Marines"
+getgenv().Hide_Menu = false
+getgenv().Auto_Execute = false
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()
+
+local Tab7o = MakeTab({Name = "VoIcano Hub"})
+  
+    AddButton(Tab9o, {
+     Name = "Volcano Hub",
+    Callback = function()
+    
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/wpisstestfprg/Volcano/refs/heads/main/VolcanoLocal.lua", true))()
